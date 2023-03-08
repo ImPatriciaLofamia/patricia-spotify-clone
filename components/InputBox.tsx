@@ -17,17 +17,17 @@ const InputBox = ({
   onChange = () => null,
   label,
 }: InputProps) => {
-  <>
+  <div>
     {label && <p className="text-sm font-bold"> {label} </p>}
     <input
-      className={`${className} bg-white border pb-3 border-gray-400 text-base text-black font-medium rounded-lg
-    ${type && "accent-green-500"} `}
+      className={`${className} ${type="checkbox" && "accent-green-500"} bg-white border pb-3 border-gray-400 text-base text-black font-medium rounded-lg
+    `}
       placeholder={placeholder}
       type={type}
       value={value}
       onChange={(e) => onChange(e.target.value)}
     />
-  </>;
+  </div>;
 };
 
 export default InputBox;
