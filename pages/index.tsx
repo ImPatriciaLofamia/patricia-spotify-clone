@@ -1,10 +1,10 @@
-import SideBarNav from "@/components/SideBarNav"
 import React from "react"
+import { Login } from "./Login"
 
 export default function Home() {
   return (
     <>
-     <SideBarNav/>
+     <Login/>
     </>
   )
 }
