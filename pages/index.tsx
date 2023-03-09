@@ -1,10 +1,14 @@
-import React from "react"
-import { Login } from "./Login"
+import React from "react";
+import { Login } from "./Login";
+import SideBarNav from "@/components/SideBarNav";
 
 export default function Home() {
   return (
     <>
-     <Login/>
+      <div className="bg-black h-screen overflow-hidden">
+        <SideBarNav />
+      </div>
+      {/* <Login/> */}
     </>
-  )
+  );
 }

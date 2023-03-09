@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@/components/Button";
-import InputBox from "@/components/InputBox";
+import InputField from "@/components/InputField";
 
 export const Login = () => {
   return (
@@ -20,6 +20,7 @@ export const Login = () => {
           </p>
           <div className="flex flex-col gap-3 border-gray-300 pb-2">
             <Button
+              className="px-8 py-3"
               primary
               icon={
                 <svg viewBox="0 0 48 48" width="25px" height="25px">
@@ -75,7 +76,7 @@ export const Login = () => {
                   </g>
                 </svg>
               }
-              className="bg-black text-white hover:bg-slate-700"
+              className="bg-black text-white hover:bg-slate-700 px-8 py-3"
               buttonName={"continue with apple".toUpperCase()}
             />
             <Button
@@ -99,7 +100,7 @@ export const Login = () => {
                   />
                 </svg>
               }
-              className="bg-white text-black  hover:bg-slate-300"
+              className="bg-white text-black  hover:bg-slate-300 px-8 py-3"
               buttonName={"continue with google".toUpperCase()}
             />
             <div className=" w-full flex justify-center gap-2 items-center">
@@ -107,13 +108,15 @@ export const Login = () => {
               <p className=" font-sans font-bold text-xs">OR</p>
               <div className="w-full border border-gray-400"></div>
             </div>
-            <InputBox
-              className="p-3 "
+            <InputField
+              className="p-3 w-full"
+              type="text"
               label="Email address or username"
               placeholder="Email address or username"
             />
-            <InputBox
-              className="p-3 "
+            <InputField
+              className="p-3 w-full"
+              type="text"
               label="Password"
               placeholder="Password"
             />
@@ -125,15 +128,15 @@ export const Login = () => {
             </a>
             <div className="flex justify-between border-b-2 border-gray-300 pb-2">
               <div className="flex gap-2 items-center">
-                <InputBox type="checkbox"/>
+                <InputField type="checkbox" />
                 <p>Remember me</p>
               </div>
-              <Button success buttonName="LOGIN"/>
+              <Button className="px-8 py-3" success buttonName="LOGIN" />
             </div>
             <p className="font-bold text-center">Don't have an account?</p>
             <Button
               buttonName="SIGN UP FOR SPOTIFY"
-              className="hover:bg-slate-300 flex justify-center"
+              className="hover:bg-slate-300 flex justify-center px-8 py-3"
             />
           </div>
         </div>
