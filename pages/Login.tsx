@@ -3,7 +3,7 @@ import { getProviders, signIn } from "next-auth/react";
 import Button from "@/components/Button";
 import InputField from "@/components/InputField";
 
-function Login({ providers }) {
+export const Login = (providers) => {
   return (
     <div className="flex flex-col justify-center w-full">
       <div className="flex justify-center w-full py-6 border-b-2 border-gray-300">
