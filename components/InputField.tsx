@@ -3,7 +3,7 @@ import React from "react";
 interface InputProps {
   placeholder?: string;
   className?: string;
-  type?: string;
+  type: string;
   value?: string;
   onChange?: (text: string) => void;
   label?: string;
@@ -12,7 +12,7 @@ interface InputProps {
 export const InputField = ({
   placeholder,
   className,
-  type,
+  type = "text",
   value,
   label,
   onChange = () => null,
