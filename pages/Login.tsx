@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@/components/Button";
 import InputField from "@/components/InputField";
+
 export const Login = () => {
   return (
     <div className="flex w-full justify-center flex-col">
@@ -19,8 +20,8 @@ export const Login = () => {
           </p>
           <div className="flex flex-col gap-3 border-gray-300 pb-2">
             <Button
-              primary
               className="px-8 py-3"
+              primary
               icon={
                 <svg viewBox="0 0 48 48" width="25px" height="25px">
                   <linearGradient
@@ -109,15 +110,15 @@ export const Login = () => {
             </div>
             <InputField
               className="p-3 w-full"
+              type="text"
               label="Email address or username"
               placeholder="Email address or username"
-              type="text"
             />
             <InputField
               className="p-3 w-full"
+              type="text"
               label="Password"
               placeholder="Password"
-              type="text"
             />
             <a
               className="inline-block align-baseline font-bold underline text-sm text-black hover:text-green-500"
@@ -127,10 +128,10 @@ export const Login = () => {
             </a>
             <div className="flex justify-between border-b-2 border-gray-300 pb-2">
               <div className="flex gap-2 items-center">
-                <InputField type="checkbox"/>
+                <InputField type="checkbox" />
                 <p>Remember me</p>
               </div>
-              <Button className="px-8 py-3" success buttonName="LOGIN"/>
+              <Button className="px-8 py-3" success buttonName="LOGIN" />
             </div>
             <p className="font-bold text-center">Don't have an account?</p>
             <Button
