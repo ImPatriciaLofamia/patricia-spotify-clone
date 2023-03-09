@@ -12,7 +12,10 @@ const UserProfile = ({src, username, className, dropdown}: UserProps) => {
                 src={src}
             />
             <p className="text-base hidden sm:block">{username}</p>
-            {dropdown}
+            <button
+                onClick={() => alert('Menu: Account, Profile, Get Premium, Settings, Logout')}
+                className=""
+            >{dropdown}</button>
         </div>
     )
 }
