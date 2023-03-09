@@ -1,4 +1,5 @@
 import React from "react";
+import { getProviders, signIn } from "next-auth/react"
 import Button from "@/components/Button";
 import InputBox from "@/components/InputBox";
 
@@ -141,3 +142,6 @@ export const Login = () => {
     </div>
   );
 };
+export async function getServerSideProps(){
+  const providers = await getProviders();
+}
