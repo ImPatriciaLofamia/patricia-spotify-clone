@@ -1,5 +1,4 @@
 import React from "react";
-import { Login } from "./Login";
 import SideBarNav from "@/components/SideBarNav";
 
 export default function Home() {
@@ -8,7 +7,6 @@ export default function Home() {
       <div className="bg-black h-screen overflow-hidden">
         <SideBarNav />
       </div>
-      {/* <Login/> */}
     </>
   );
 }
