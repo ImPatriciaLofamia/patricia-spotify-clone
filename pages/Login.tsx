@@ -47,6 +47,7 @@ export const Login = (providers) => {
                 </svg>
               }
               buttonName={"Continue with Facebook".toUpperCase()}
+              onClick={() => alert(`You're logging to spotify using your facebook account 😊!`)}
             />
             <Button
               icon={
@@ -79,8 +80,14 @@ export const Login = (providers) => {
               }
               className="px-8 py-3 text-white bg-black hover:bg-slate-700"
               buttonName={"continue with apple".toUpperCase()}
+              onClick={() =>
+                alert(`You're logging to spotify using your apple account 🍎!`)
+              }
             />
             <Button
+              onClick={() =>
+                alert(`You're logging to spotify using your google account 🔍!`)
+              }
               icon={
                 <svg viewBox="0 0 48 48" width="25px" height="25px">
                   <path
@@ -141,15 +148,17 @@ export const Login = (providers) => {
                       buttonName="LOGIN"
                       onClick={() => {
                         signIn(provider.id, { callbackUrl: "/" });
-                        console.log("uadad", provider);
+                        alert(`DASURV KO NG FREE MILKTEA 🥰`);
+                        //console.log("uadad", provider);
                       }}
                     />
                   </div>
                 );
               })}
             </div>
-            <p className="font-bold text-center">Doddn't have an account?</p>
+            <p className="font-bold text-center">Don't have an account?</p>
             <Button
+              onClick={() => alert(`Signing up for spotify 😍!`)}
               buttonName="SIGN UP FOR SPOTIFY"
               className="flex justify-center px-8 py-3 hover:bg-slate-300"
             />
@@ -158,7 +167,7 @@ export const Login = (providers) => {
       </div>
     </div>
   );
-}
+};
 export default Login;
 export async function getServerSideProps() {
   const providers = await getProviders();
