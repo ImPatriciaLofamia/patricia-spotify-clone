@@ -1,3 +1,4 @@
+import Svg from "./Svg"
 interface UserProps {
     src: string,
     username: string,
@@ -7,9 +8,9 @@ interface UserProps {
 const UserProfile = ({src, username, className, dropdown}: UserProps) => {
     return(
         <div className="flex items-center">
-            <img 
-                className={`${className} sm: w-10 h-10`}
-                src={src}
+            <Svg 
+            src={src}
+            className={`${className} sm: w-10 h-10`}
             />
             <p className="text-base hidden sm:block">{username}</p>
             <button
