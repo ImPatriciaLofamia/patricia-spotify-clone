@@ -4,15 +4,12 @@ import Button from "@/components/Button";
 import InputField from "@/components/InputField";
 import Svg from "@/components/Svg";
 
-export const Login = (providers) => {
+function Login({providers}) {
   return (
     <div className="flex flex-col justify-center w-full">
       <div className="flex justify-center w-full py-6 border-b-2 border-gray-300">
         <div className="flex flex-row items-center">
-          <Svg 
-            src="spotify.png"
-            className="w-10 h-34"
-          />
+          <Svg src="spotify.png" className="w-10 h-34" />
           <p className="text-2xl font-bold"> Spotify.</p>
         </div>
       </div>
@@ -27,7 +24,11 @@ export const Login = (providers) => {
               primary
               src="fb.png"
               buttonName={"Continue with Facebook".toUpperCase()}
-              onClick={() => alert(`You're logging to spotify using your facebook account 😊!`)}
+              onClick={() =>
+                alert(
+                  `You're logging to spotify using your facebook account 😊!`
+                )
+              }
             />
             <Button
               src="apple.png"
@@ -82,8 +83,7 @@ export const Login = (providers) => {
                       buttonName="LOGIN"
                       onClick={() => {
                         signIn(provider.id, { callbackUrl: "/" });
-                        alert(`DASURV KO NG FREE MILKTEA 🥰`);
-                        //console.log("uadad", provider);
+                        console.log("uadad", provider);
                       }}
                     />
                   </div>
