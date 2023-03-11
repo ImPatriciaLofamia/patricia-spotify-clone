@@ -17,7 +17,7 @@ import { playlistIdState } from "../atoms/playlistAtom";
 const SideBarNav = () => {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
-  const [playlist, setPlaylists] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const SideBarNav = () => {
     }
   }, [session, spotifyApi]);
   return (
-    <div className="text-gray-500 p-3 text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen">
+    <div className="text-gray-500 p-3 text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen hidden sm:block">
       <div className="space-y-4">
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
@@ -63,7 +63,7 @@ const SideBarNav = () => {
         />
         <hr className="border-t-[0.1px] border-gray-900"></hr>
 
-        {playlist.map((playlist) => (
+        {playlists.map((playlist) => (
           <p
             key={playlist.id}
             onClick={() => setPlaylistId(playlist.id)}
