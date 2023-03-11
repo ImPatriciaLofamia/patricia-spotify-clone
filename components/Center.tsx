@@ -45,7 +45,7 @@ function Center(){
       <header className="absolute top-5 right-8">
         <div className="bg-black text-white items-center opacity-90 hover:opacity-80 space-x-7 cursor-pointer py-1 pr-2 px-1 rounded-full">
           <UserProfile
-            className="rounded-full font-bold"
+            className="rounded-full font-bold space-x-2"
             image={session?.user?.image}
             userName={session?.user?.name}
             dropdown={<ChevronDownIcon className="w-5 h-5" />}
