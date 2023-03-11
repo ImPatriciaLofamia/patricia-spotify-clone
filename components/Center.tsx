@@ -62,7 +62,7 @@ function Center(){
         <img className="w-44 h-44 shadow-2xl" src={playlists?.images?.[0]?.url} />
         <div>
           <p>PLAYLIST</p>
-          <h1 >
+          <h1 className="text-2x1 md:text-3x1 xl:text-5xl font-bold">
             {playlists?.name}
           </h1>
         </div>
