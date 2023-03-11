@@ -2,14 +2,13 @@ import React from "react";
 import { getProviders, signIn } from "next-auth/react";
 import Button from "@/components/Button";
 import InputField from "@/components/InputField";
-import Svg from "@/components/Svg";
 
 function Login({providers}) {
   return (
     <div className="flex flex-col justify-center w-full">
       <div className="flex justify-center w-full py-6 border-b-2 border-gray-300">
         <div className="flex flex-row items-center">
-          <Svg src="spotify.png" className="w-10 h-34" />
+          <img src="spotify.png" className="w-15"/>
           <p className="text-2xl font-bold"> Spotify.</p>
         </div>
       </div>
@@ -22,7 +21,7 @@ function Login({providers}) {
             <Button
               className="px-8 py-3"
               primary
-              src="fb.png"
+              image="fb.png"
               buttonName={"Continue with Facebook".toUpperCase()}
               onClick={() =>
                 alert(
@@ -31,7 +30,7 @@ function Login({providers}) {
               }
             />
             <Button
-              src="apple.png"
+              image="apple.png"
               className="px-8 py-3 text-white bg-black hover:bg-slate-700"
               buttonName={"continue with apple".toUpperCase()}
               onClick={() =>
@@ -42,7 +41,7 @@ function Login({providers}) {
               onClick={() =>
                 alert(`You're logging to spotify using your google account 🔍!`)
               }
-              src="google.png"
+              image="google.png"
               className="px-8 py-3 text-black bg-white hover:bg-slate-300"
               buttonName={"continue with google".toUpperCase()}
             />

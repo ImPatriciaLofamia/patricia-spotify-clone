@@ -1,18 +1,19 @@
 import React from "react";
-import Svg from "./Svg";
+
 interface ButtonProps {
   buttonName: string;
-  icon?: any;
+  imageIcon?: any;
   className?: string;
   onClick?: () => void;
-  src?: string;
+  image? : string,
   success?: boolean;
   primary?: boolean;
 }
+
 const Button = ({
   buttonName,
-  icon,
-  src,
+  imageIcon,
+  image,
   className,
   onClick,
   success,
@@ -26,12 +27,13 @@ const Button = ({
             ${primary && "text-white bg-blue-500 hover:bg-blue-600"}
             `}
     >
-      <span className="hidden sm:block">
-        {icon}
-        <img className={`${success && "w-0"} ${!src && "w-0"} w-7`} src={src} />
+      <span>
+        {imageIcon}
+        <img src={image} className={`w-0 hidden sm:block ${image && "w-7"}`} />
       </span>
       {buttonName}
     </button>
   );
 };
+
 export default Button;
