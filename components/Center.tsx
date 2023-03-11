@@ -33,6 +33,7 @@ function Center(){
       .getPlaylist(playlistId)
       .then((data) => {
         setPlaylist(data.body);
+        console.log('data.body', data.body);
       })
       .catch((err) => console.log('Something went wrong!', err));
     }, [spotifyApi, playlistId]);
