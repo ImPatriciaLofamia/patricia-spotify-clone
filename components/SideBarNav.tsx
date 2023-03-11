@@ -17,7 +17,7 @@ import { playlistIdState } from "../atoms/playlistAtom";
 const SideBarNav = () => {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
-  const [playlists, setPlaylists] = useState([]);
+  const [playlist, setPlaylists] = useState([]);
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
   useEffect(() => {
@@ -33,43 +33,43 @@ const SideBarNav = () => {
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="Home"
-          icon={<HomeIcon className="w-5 h-5" />}
+          imageIcon={<HomeIcon className="w-5 h-5" />}
         />
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="Search"
-          icon={<SearchIcon className="w-5 h-5" />}
+          imageIcon={<SearchIcon className="w-5 h-5" />}
         />
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="My Library"
-          icon={<LibraryIcon className="w-5 h-5" />}
+          imageIcon={<LibraryIcon className="w-5 h-5" />}
         />
         <hr className="border-t-[0.1px] border-gray-900"></hr>
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="Create Playlist"
-          icon={<PlusCircleIcon className="w-5 h-5" />}
+          imageIcon={<PlusCircleIcon className="w-5 h-5" />}
         />
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="Liked Song"
-          icon={<HeartIcon className="w-5 h-5" />}
+          imageIcon={<HeartIcon className="w-5 h-5" />}
         />
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="Episodes"
-          icon={<RssIcon className="w-5 h-5" />}
+          imageIcon={<RssIcon className="w-5 h-5" />}
         />
         <hr className="border-t-[0.1px] border-gray-900"></hr>
 
-        {playlists.map((playlist) => (
+        {playlist.map((playlist) => (
           <p
             key={playlist.id}
             onClick={() => setPlaylistId(playlist.id)}
             className="cursor-pointer hover:text-white"
           >
-            <Link href={`/tracks/${playlist.id}`}>{playlist.name}</Link>
+            {playlist.name}
           </p>
         ))}
       </div>

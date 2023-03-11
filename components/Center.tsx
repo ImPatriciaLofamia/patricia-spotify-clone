@@ -1,12 +1,12 @@
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import UserProfile from "./UserProfile";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
 import { useRecoilState, useRecoilValue } from "recoil";
+import UserProfile from "./UserProfile";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import useSpotify from "@/hooks/useSpotify";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import Songs from "./Songs";
 
 const colors = [
   "from-indigo-500",
@@ -17,49 +17,50 @@ const colors = [
   "from-orange-500",
   "from-purple-500",
 ];
-export const Center = () => {
+function Center(){
+  const { data: session, status } = useSession();
+  const spotifyApi = useSpotify();
   const [color, setColor] = useState(null);
   const playlistId = useRecoilValue(playlistIdState);
   const [playlist, setPlaylist] = useRecoilState(playlistState);
+  const [isActive, setActive] = useState(false);
 
   useEffect(() => {
     setColor(shuffle(colors).pop());
   }, [playlistId]);
 
-  const router = useRouter();
-  const spotifyApi = useSpotify();
-  const { data: session, status } = useSession();
   useEffect(() => {
-    if (!session?.user && status !== "loading" && status !== "authenticated") {
-      router.push("/login");
-    }
-  }, [session]);
-  useEffect(() => {
-    if (spotifyApi.getAccessToken()) {
-      spotifyApi.getUserPlaylists().then((data: any) => {
-        console.log("data", data);
-        setPlaylist(data.body.items);
-      });
-    }
-  }, [spotifyApi]);
-
+  spotifyApi
+      .getPlaylist(playlistId)
+      .then((data) => {
+        setPlaylist(data.body);
+      })
+      .catch((err) => console.log('Something went wrong!', err));
+    }, [spotifyApi, playlistId]);
+  const handleToggle = () => {
+    setActive(!isActive);
+  }
+  
   return (
     <div className="flex flex-grow">
       <header className="absolute top-5 right-8">
-        <div className="bg-green-300 items-center opacity-90 hover:opacity-80 space-x-3 cursor-pointer py-1 pr-2 px-1 rounded-full">
+        <div className="bg-green-300 items-center opacity-90 hover:opacity-80 space-x-4 cursor-pointer py-1 pr-2 px-1 rounded-full">
           <UserProfile
-            className="rounded-full w-5 h-5 font-bold"
-            src="PAT.jpg"
-            username="Patricia Lofamia"
+            className="rounded-full font-bold"
+            image={session?.user?.image}
+            username={session?.user?.name}
             dropdown={<ChevronDownIcon className="w-5 h-5" />}
           />
         </div>
       </header>
+      <div>
+
+      </div>
       <section
         className={`flex items-end space-x-7 bg-gradient-to-b to-black 
       ${color} h-80 text-white px-5 w-full`}
       >
-        <img className="w-44 h-44 shadow-2xl" src={playlist?.images?.url} />
+        <img className="w-44 h-44 shadow-2xl" src={playlist?.images?.[0]?.url} />
         <div>
           <p>PLAYLIST</p>
           <h1 className="text-2xl md:text-3xl xl:text-5xl font-bold">
@@ -67,6 +68,10 @@ export const Center = () => {
           </h1>
         </div>
       </section>
+
+      <div>
+        <Songs />
+      </div>
     </div>
   );
 };
