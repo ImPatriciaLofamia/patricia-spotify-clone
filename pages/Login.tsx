@@ -24,9 +24,7 @@ function Login({providers}) {
               image="fb.png"
               buttonName={"Continue with Facebook".toUpperCase()}
               onClick={() =>
-                alert(
-                  `You're logging to spotify using your facebook account 😊!`
-                )
+                alert('You clicked a button.')
               }
             />
             <Button
@@ -34,12 +32,12 @@ function Login({providers}) {
               className="px-8 py-3 text-white bg-black hover:bg-slate-700"
               buttonName={"continue with apple".toUpperCase()}
               onClick={() =>
-                alert(`You're logging to spotify using your apple account 🍎!`)
+                alert(`You clicked a button.`)
               }
             />
             <Button
               onClick={() =>
-                alert(`You're logging to spotify using your google account 🔍!`)
+                alert(`You clicked a button.`)
               }
               image="google.png"
               className="px-8 py-3 text-black bg-white hover:bg-slate-300"
@@ -81,8 +79,7 @@ function Login({providers}) {
                       success
                       buttonName="LOGIN"
                       onClick={() => {
-                        signIn(provider.id, { callbackUrl: "/" });
-                        console.log("uadad", provider);
+                        signIn(provider.id, { callbackUrl: "/" })
                       }}
                     />
                   </div>
@@ -91,7 +88,7 @@ function Login({providers}) {
             </div>
             <p className="font-bold text-center">Don't have an account?</p>
             <Button
-              onClick={() => alert(`Signing up for spotify 😍!`)}
+              onClick={() => alert(`Signing up for You clicked a button!`)}
               buttonName="SIGN UP FOR SPOTIFY"
               className="flex justify-center px-8 py-3 hover:bg-slate-300"
             />
