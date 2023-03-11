@@ -43,7 +43,7 @@ function Center(){
   return (
     <div className="flex flex-grow">
       <header className="absolute top-5 right-8">
-        <div className="bg-green-300 items-center opacity-90 hover:opacity-80 space-x-4 cursor-pointer py-1 pr-2 px-1 rounded-full">
+        <div className="bg-black text-white items-center opacity-90 hover:opacity-80 space-x-7 cursor-pointer py-1 pr-2 px-1 rounded-full">
           <UserProfile
             className="rounded-full font-bold"
             image={session?.user?.image}
