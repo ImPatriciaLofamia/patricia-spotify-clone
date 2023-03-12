@@ -6,6 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import UserProfile from "./UserProfile";
 import { playlistIdState, playlistState } from "../atoms/playlistAtom";
 import useSpotify from "@/hooks/useSpotify";
+import Tracks from "./Tracks";
 
 const colors = [
   "from-indigo-500",
@@ -33,7 +34,7 @@ function Center(){
       .getPlaylist(playlistId)
       .then((data) => {
         setPlaylist(data.body);
-        console.log('data.body', data.body);
+        console.log('data.body', data);
       })
       .catch((err) => console.log('Something went wrong!', err));
     }, [spotifyApi, playlistId]);
@@ -42,7 +43,7 @@ function Center(){
   }
   
   return (
-    <div className="flex flex-grow">
+    <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide select-none relative">
       <header className="absolute top-5 right-8">
         <div className="bg-black text-white items-center opacity-90 hover:opacity-80 space-x-7 cursor-pointer py-1 pr-2 px-1 rounded-full">
           <UserProfile
@@ -68,6 +69,10 @@ function Center(){
           </h1>
         </div>
       </section>
+      
+      <div>
+        <Tracks />
+      </div>
     </div>
   );
 };
