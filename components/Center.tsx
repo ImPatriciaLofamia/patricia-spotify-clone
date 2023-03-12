@@ -17,31 +17,27 @@ const colors = [
   "from-orange-500",
   "from-purple-500",
 ];
-function Center(){
+function Center() {
   const { data: session, status } = useSession();
   const spotifyApi = useSpotify();
   const [color, setColor] = useState(null);
   const playlistId = useRecoilValue(playlistIdState);
   const [playlists, setPlaylist] = useRecoilState(playlistState);
-  const [isActive, setActive] = useState(false);
 
   useEffect(() => {
     setColor(shuffle(colors).pop());
   }, [playlistId]);
 
   useEffect(() => {
-  spotifyApi
+    spotifyApi
       .getPlaylist(playlistId)
       .then((data) => {
         setPlaylist(data.body);
-        console.log('data.body', data);
+        console.log("data.body", data);
       })
-      .catch((err) => console.log('Something went wrong!', err));
-    }, [spotifyApi, playlistId]);
-  const handleToggle = () => {
-    setActive(!isActive);
-  }
-  
+      .catch((err) => console.log("Something went wrong!", err));
+  }, [spotifyApi, playlistId]);
+
   return (
     <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide select-none relative">
       <header className="absolute top-5 right-8">
@@ -54,26 +50,27 @@ function Center(){
           />
         </div>
       </header>
-      <div>
-
-      </div>
+      <div></div>
       <section
         className={`flex items-end space-x-7 bg-gradient-to-b to-black 
       ${color} h-80 text-white px-5 w-full`}
       >
-        <img className="w-44 h-44 shadow-2xl" src={playlists?.images?.[0]?.url} />
+        <img
+          className="w-44 h-44 shadow-2xl"
+          src={playlists?.images?.[0]?.url}
+        />
         <div>
           <p>PLAYLIST</p>
-          <h1 className="text-2x1 md:text-3x1 xl:text-5xl font-bold">
+          <h1 className="text-xs md:text-xs xl:text-5xl font-bold">
             {playlists?.name}
           </h1>
         </div>
       </section>
-      
+
       <div>
         <Tracks />
       </div>
     </div>
   );
-};
+}
 export default Center;

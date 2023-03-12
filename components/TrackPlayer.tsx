@@ -76,14 +76,14 @@ export const TrackPlayer = () => {
   }, [volume]);
 
   return (
-    <div className="h-24 bg-gradient-to-b from-gray-900 to-black text-white grid grid-cols-3 text-sm md:text-base px-2 md:px-8">
-      <div className="flex items-center space-x-4">
+    <div className="h-24 bg-gradient-to-b from-gray-900 to-black text-white grid grid-cols-3 flex justify-end  px-1 md:px-5">
+      <div className="flex items-center space-x-2">
         <img
           className="hidden md:inline h-10 w-10"
           src={songInfo?.album.images?.[0]?.url}
         />
-        <div>
-          <h3>{songInfo?.name}</h3>
+        <div className="text-lg md:text-xs">
+          <p>{songInfo?.name}</p>
           <p>{songInfo?.artists?.[0]?.name}</p>
         </div>
       </div>
@@ -162,7 +162,7 @@ export const TrackPlayer = () => {
             buttonName=""
             imageIcon={
               <MusicNoteIcon
-                className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
+                className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out hidden md:block"
                 onClick={() => {}}
               />
             }

@@ -30,7 +30,7 @@ const SideBarNav = () => {
   return (
     <div className="bg-black text-gray-500 p-3 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36">
       <div className="space-y-4">
-        <Link href="/">
+        <Link href="/home">
           <Button
             className="flex items-center space-x-2 justify-start hover:text-white border-0"
             buttonName="Home"
