@@ -1,12 +1,13 @@
 import React from "react";
 
 interface InputProps {
-  placeholder?: string;
-  className?: string;
-  type: string;
-  value?: string;
-  onChange?: (text: string) => void;
-  label?: string;
+  placeholder?: string,
+  className?: string,
+  type: string,
+  value?: any,
+  label?: string,
+  min? : any,
+  max? : any
 }
 
 export const InputField = ({
@@ -15,7 +16,6 @@ export const InputField = ({
   type = "text",
   value,
   label,
-  onChange = () => null,
 }: InputProps) => {
   return (
     <div>
@@ -28,7 +28,6 @@ export const InputField = ({
         placeholder={placeholder}
         type={type}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
       />
     </div>
   );

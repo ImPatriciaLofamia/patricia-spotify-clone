@@ -11,7 +11,7 @@ const UserProfile = ({image, userName, className, dropdown}: UserProps) => {
             <p className="text-base hidden sm:block">{userName}</p>
             <button
                 onClick={() => {}}
-                className=""
+                className="hover:scale-125"
             >{dropdown}</button>
         </div>
     )

@@ -40,7 +40,7 @@ function Login({providers}) {
                 alert(`You clicked a button.`)
               }
               image="google.png"
-              className="px-8 py-3 text-black bg-white hover:bg-slate-300"
+              className="px-8 py-3 border border-gray-400 text-black bg-white hover:bg-slate-300"
               buttonName={"continue with google".toUpperCase()}
             />
             <div className="flex items-center justify-center w-full gap-2 ">

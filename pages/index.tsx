@@ -2,6 +2,7 @@ import React from "react";
 import SideBarNav from "@/components/SideBarNav";
 import Center from "@/components/Center";
 import { getSession } from "next-auth/react";
+import TrackPlayer from "@/components/TrackPlayer";
 
 export default function Home() {
   return (
@@ -10,6 +11,10 @@ export default function Home() {
         <SideBarNav />
         <Center />
       </main>
+
+      <div className="sticky bottom-0">
+        <TrackPlayer />
+      </div>
     </div>
   );
 }

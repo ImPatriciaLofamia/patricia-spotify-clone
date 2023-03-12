@@ -5,6 +5,8 @@ interface ButtonProps {
   imageIcon?: any;
   className?: string;
   onClick?: () => void;
+  value? : any,
+  onChange?: (text: string) => void,
   image? : string,
   success?: boolean;
   primary?: boolean;
@@ -14,17 +16,21 @@ const Button = ({
   buttonName,
   imageIcon,
   image,
+  value,
   className,
   onClick,
+  onChange = () => null,
   success,
   primary,
 }: ButtonProps) => {
   return (
     <button
+      value={value}
       onClick={onClick}
-      className={`${className} rounded-full flex justify-center py-1 border border-gray-400 sm:text-sm items-center font-medium
-            ${success && "text-black bg-green-400  hover:bg-green-600"}
-            ${primary && "text-white bg-blue-500 hover:bg-blue-600"}
+      onChange={(e) => onChange(e.target.value)}
+      className={`${className} rounded-full flex justify-center py-1 sm:text-sm items-center font-medium
+            ${success && "text-black bg-green-400  hover:scale-125 border border-gray-400"}
+            ${primary && "text-white bg-blue-500 hover:bg-blue-600 border border-gray-400"}
             `}
     >
       <span>
