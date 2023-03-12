@@ -11,7 +11,7 @@ import useSpotify from "../hooks/useSpotify";
 import { playlistIdState } from "../atoms/playlistAtom";
 import UserProfile from "@/components/UserProfile";
 
-function HomePlaylist() {
+function Home() {
   const router = useRouter();
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
@@ -96,4 +96,4 @@ function HomePlaylist() {
   );
 }
 
-export default HomePlaylist;
+export default Home;
