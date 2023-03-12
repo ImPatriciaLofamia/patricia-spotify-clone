@@ -31,7 +31,6 @@ function Home() {
       });
     }
   }, [spotifyApi]);
-
   return (
     <div className="flex flex-grow bg-gradient-to-b to-black from-indigo-700 p-2 px-4">
       <div>
@@ -69,7 +68,6 @@ function Home() {
             ))}
           </div>
           <hr className="border-t-[0.1px] border-gray-900 mt-1" />
-
           <h2 className="pt-8 pl-4 mb-4 text-3xl text-white text-bold">
             Made For Z
           </h2>
@@ -88,7 +86,6 @@ function Home() {
               </Link>
             ))}
           </ul>
-
           <hr className="border-t-[0.1px] border-gray-900 my-8" />
         </section>
       </div>
