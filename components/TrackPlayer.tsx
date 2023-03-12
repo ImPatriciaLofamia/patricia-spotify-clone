@@ -28,17 +28,14 @@ export const TrackPlayer = () => {
     useRecoilState(currentTrackIdState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
   const [volume, setVolume] = useState(50);
-
   const songInfo = useSongInfo();
 
   const fetchCurrentSong = () => {
     if (!songInfo) {
       spotifyApi.getMyCurrentPlayingTrack().then((data) => {
-        console.log("Now Playing: ", data.body?.item);
         setCurrentTrackId(data.body?.item?.id);
 
         spotifyApi.getMyCurrentPlaybackState().then((data) => {
-          console.log("Now playing: ", data.body);
           setIsPlaying(data.body?.is_playing);
         });
       });
@@ -62,10 +59,10 @@ export const TrackPlayer = () => {
     }
   }, [currentTrackIdState, spotifyApi, session]);
   useEffect(() => {
-    if(volume > 0 && volume < 100){
+    if (volume > 0 && volume < 100) {
       debouncedAdjustVolume(volume);
     }
-  },[volume]);
+  }, [volume]);
   const debouncedAdjustVolume = useCallback(
     debounce((volume) => {
       spotifyApi.setVolume(volume).catch((err) => {});
@@ -138,31 +135,35 @@ export const TrackPlayer = () => {
           <Button
             buttonName=""
             imageIcon={
-              <VolumeDownIcon className="w-5 h-5  cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
-              onClick={() => volume > 0 && setVolume(volume - 10)} 
+              <VolumeDownIcon
+                className="w-5 h-5  cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
+                onClick={() => volume > 0 && setVolume(volume - 10)}
               />
             }
           />
-          <InputField 
-             type="range"
-             value={volume}
-             onChange={(e) => setVolume(Number(e.target.value))}
-             min={0}
-             max={100}
-             className="w-14 md:w-36 "
+          <InputField
+            type="range"
+            value={volume}
+            onChange={(e) => setVolume(Number(e.target.value))}
+            min={0}
+            max={100}
+            className="w-14 md:w-36 "
           />
           <Button
             buttonName=""
             imageIcon={
-              <VolumeUpIcon className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
-              onClick={() => volume < 100 && setVolume(volume + 10)} />
+              <VolumeUpIcon
+                className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
+                onClick={() => volume < 100 && setVolume(volume + 10)}
+              />
             }
           />
           <Button
             buttonName=""
             imageIcon={
-              <MusicNoteIcon className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
-              onClick={()=>{}}
+              <MusicNoteIcon
+                className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
+                onClick={() => {}}
               />
             }
           />
@@ -171,5 +172,4 @@ export const TrackPlayer = () => {
     </div>
   );
 };
-
 export default TrackPlayer;

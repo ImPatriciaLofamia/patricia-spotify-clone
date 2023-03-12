@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {
   RssIcon,
-  HomeIcon,
   SearchIcon,
+  HomeIcon,
   LibraryIcon,
   PlusCircleIcon,
-  HeartIcon,
 } from "@heroicons/react/outline";
+import { HeartIcon } from "@heroicons/react/solid";
 import Button from "./Button";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -30,11 +30,14 @@ const SideBarNav = () => {
   return (
     <div className="bg-black text-gray-500 p-3 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36">
       <div className="space-y-4">
-        <Button
-          className="flex items-center space-x-2 justify-start hover:text-white border-0"
-          buttonName="Home"
-          imageIcon={<HomeIcon className="w-5 h-5" />}
-        />
+        <Link href="/">
+          <Button
+            className="flex items-center space-x-2 justify-start hover:text-white border-0"
+            buttonName="Home"
+            imageIcon={<HomeIcon className="w-5 h-5" />}
+          />
+        </Link>
+
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="Search"
@@ -54,12 +57,12 @@ const SideBarNav = () => {
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="Liked Song"
-          imageIcon={<HeartIcon className="w-5 h-5" />}
+          imageIcon={<HeartIcon className="w-5 h-5 text-blue-500" />}
         />
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
           buttonName="Episodes"
-          imageIcon={<RssIcon className="w-5 h-5" />}
+          imageIcon={<RssIcon className="w-5 h-5 text-green-500" />}
         />
         <hr className="border-t-[0.1px] border-gray-900"></hr>
 
