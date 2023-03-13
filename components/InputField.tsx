@@ -4,8 +4,7 @@ interface InputProps {
   placeholder?: string;
   className?: string;
   type: string;
-  value?: string;
-  onChange?: (text: string) => void;
+  value?: any;
   label?: string;
 }
 
@@ -15,20 +14,19 @@ export const InputField = ({
   type = "text",
   value,
   label,
-  onChange = () => null,
 }: InputProps) => {
   return (
     <div>
-      {label && <p className="text-sm font-bold"> {label} </p>}
+      {label && <p className="text-sm font-bold pb-2"> {label} </p>}
       <input
-        className={`${className} ${
-          type == "checkbox" && "accent-green-500"
-        }  bg-white border pb-3 border-gray-400 text-base text-black font-medium rounded-lg
+        className={`${className} 
+        ${type == "checkbox" && "accent-green-500"} 
+        ${type === "range" && 'flex items-center' } 
+        bg-white border pb-0 border-gray-400 text-base text-black font-medium rounded-lg
     `}
         placeholder={placeholder}
         type={type}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
       />
     </div>
   );
