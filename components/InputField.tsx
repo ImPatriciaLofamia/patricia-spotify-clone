@@ -1,13 +1,13 @@
 import React from "react";
 
 interface InputProps {
-  placeholder?: string,
-  className?: string,
-  type: string,
-  value?: any,
-  label?: string,
-  min? : any,
-  max? : any
+  placeholder?: string;
+  className?: string;
+  type: string;
+  value?: any;
+  label?: string;
+  min?: any;
+  max?: any;
 }
 
 export const InputField = ({
@@ -19,11 +19,12 @@ export const InputField = ({
 }: InputProps) => {
   return (
     <div>
-      {label && <p className="text-sm font-bold"> {label} </p>}
+      {label && <p className="text-sm font-bold pb-2"> {label} </p>}
       <input
-        className={`${className} ${
-          type == "checkbox" && "accent-green-500"
-        }  bg-white border pb-3 border-gray-400 text-base text-black font-medium rounded-lg
+        className={`${className} 
+        ${type == "checkbox" && "accent-green-500"} 
+        ${type === "range" && 'flex items-center' } 
+        bg-white border pb-0 border-gray-400 text-base text-black font-medium rounded-lg
     `}
         placeholder={placeholder}
         type={type}

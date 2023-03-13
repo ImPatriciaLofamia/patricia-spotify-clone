@@ -49,13 +49,13 @@ function Login({providers}) {
               <div className="w-full border border-gray-400"></div>
             </div>
             <InputField
-              className="w-full p-3"
+              className="w-full p-3 pb-3"
               type="text"
               label="Email address or username"
               placeholder="Email address or username"
             />
             <InputField
-              className="w-full p-3"
+              className="w-full p-3 pb-3"
               type="text"
               label="Password"
               placeholder="Password"
@@ -90,7 +90,7 @@ function Login({providers}) {
             <Button
               onClick={() => alert(`Signing up for You clicked a button!`)}
               buttonName="SIGN UP FOR SPOTIFY"
-              className="flex justify-center px-8 py-3 hover:bg-slate-300"
+              className="flex justify-center px-8 py-3 border border-gray-400 hover:bg-slate-300"
             />
           </div>
         </div>

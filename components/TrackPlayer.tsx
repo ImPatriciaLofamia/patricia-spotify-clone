@@ -52,6 +52,22 @@ export const TrackPlayer = () => {
       }
     });
   };
+  
+
+  const handleNextSong = () => {
+    spotifyApi.getMyCurrentPlaybackState().then((data) => {
+      if (data.body?.is_playing) {
+        spotifyApi.skipToNext()
+        .then(() => {
+          setTimeout(() => {
+            spotifyApi.play();
+            setIsPlaying(true);
+          }, 300);
+        });
+      }
+    });
+  };
+  
   useEffect(() => {
     if (spotifyApi.getAccessToken() && !currentTrackId) {
       fetchCurrentSong();
@@ -76,28 +92,28 @@ export const TrackPlayer = () => {
   }, [volume]);
 
   return (
-    <div className="h-24 bg-gradient-to-b from-gray-900 to-black text-white grid grid-cols-3 flex justify-end  px-1 md:px-5">
+    <div className="h-24 bg-gradient-to-b from-gray-900 to-black text-white grid grid-cols-3 justify-end px-1 md:px-5">
       <div className="flex items-center space-x-2">
         <img
           className="hidden md:inline h-10 w-10"
-          src={songInfo?.album.images?.[0]?.url}
+          src={songInfo?.album?.images?.[0]?.url}
         />
-        <div className="text-lg md:text-xs">
-          <p>{songInfo?.name}</p>
-          <p>{songInfo?.artists?.[0]?.name}</p>
+        <div className="text-lg md:text-xs hidden sm:block">
+          <p className="2xl:text-base sm:text-sm">{songInfo?.name}</p>
+          <p className="2xl:text-base sm:text-sm">{songInfo?.artists?.[0]?.name}</p>
         </div>
       </div>
-      <div className="flex items-center justify-evenly">
+      <div className="flex items-center justify-evenly sm:gap-4 gap-2 pl-7 sm:pl-52 ">
         <Button
           buttonName=""
           imageIcon={
-            <SwitchHorizontalIcon className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
+            <SwitchHorizontalIcon className="w-4 sm:w-5  h-4 sm:h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
           }
         />
         <Button
           buttonName=""
           imageIcon={
-            <RewindIcon className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
+            <RewindIcon className="w-4 sm:w-5  h-4 sm:h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
           }
         />
         {isPlaying ? (
@@ -118,17 +134,17 @@ export const TrackPlayer = () => {
           />
         )}
         <Button
-          onClick={() => {}}
+          onClick={handleNextSong}
           buttonName=""
           imageIcon={
-            <FastForwardIcon className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
+            <FastForwardIcon className="w-4 sm:w-5  h-4 sm:h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
           }
         />
         <Button
           onClick={() => {}}
           buttonName=""
           imageIcon={
-            <ReplyIcon className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
+            <ReplyIcon className="w-4 sm:w-5  h-4 sm:h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
           }
         />
         <div className="flex items-center space-x-4 md:space-x-6 justify-end p-5 ">
@@ -136,7 +152,7 @@ export const TrackPlayer = () => {
             buttonName=""
             imageIcon={
               <VolumeDownIcon
-                className="w-5 h-5  cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
+                className="w-4 sm:w-5  h-4 sm:h-5  cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
                 onClick={() => volume > 0 && setVolume(volume - 10)}
               />
             }
@@ -147,13 +163,13 @@ export const TrackPlayer = () => {
             onChange={(e) => setVolume(Number(e.target.value))}
             min={0}
             max={100}
-            className="w-14 md:w-36 "
+            className="w-14 md:w-36"
           />
           <Button
             buttonName=""
             imageIcon={
               <VolumeUpIcon
-                className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
+                className="w-4 sm:w-5 h-4 sm:h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out"
                 onClick={() => volume < 100 && setVolume(volume + 10)}
               />
             }
@@ -162,7 +178,7 @@ export const TrackPlayer = () => {
             buttonName=""
             imageIcon={
               <MusicNoteIcon
-                className="w-5 h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out hidden md:block"
+                className="w-4 sm:w-5 h-4 sm:h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out hidden md:block"
                 onClick={() => {}}
               />
             }

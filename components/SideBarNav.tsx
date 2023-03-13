@@ -14,7 +14,7 @@ import useSpotify from "@/hooks/useSpotify";
 import { useRecoilState } from "recoil";
 import { playlistIdState } from "../atoms/playlistAtom";
 
-const SideBarNav = () => {
+export const SideBarNav = () => {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
@@ -67,10 +67,9 @@ const SideBarNav = () => {
         <hr className="border-t-[0.1px] border-gray-900"></hr>
 
         {playlists.map((playlist) => (
-          <p
-            key={playlist.id}
+          <p  key={playlist.id}
             onClick={() => setPlaylistId(playlist.id)}
-            className="cursor-pointer hover:text-white"
+            className="cursor-pointer hover:text-white py-1"
           >
             {playlist.name}
           </p>

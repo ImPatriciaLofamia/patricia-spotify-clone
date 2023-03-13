@@ -4,7 +4,7 @@ interface CategoryProps {
   title: any;
   subTitle: string;
 }
-const Category = ({ image, title, subTitle }: CategoryProps) => {
+export const Category = ({ image, title, subTitle }: CategoryProps) => {
   return (
     <div className="flex flex-col items-center w-48  rounded h-70 hover:bg-gray-700 hover:opacity-80">
       <div className="w-40 py-2 h-42 position-absolute">

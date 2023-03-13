@@ -28,7 +28,7 @@ const Button = ({
       value={value}
       onClick={onClick}
       onChange={(e) => onChange(e.target.value)}
-      className={`${className} rounded-full flex justify-center py-1 sm:text-sm items-center font-medium
+      className={`${className} ${imageIcon && 'gap-2'} rounded-full flex justify-center py-1 sm:text-sm items-center font-medium
             ${success && "text-black bg-green-400  hover:scale-125 border border-gray-400"}
             ${primary && "text-white bg-blue-500 hover:bg-blue-600 border border-gray-400"}
             `}
