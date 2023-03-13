@@ -6,8 +6,6 @@ interface InputProps {
   type: string;
   value?: any;
   label?: string;
-  min?: any;
-  max?: any;
 }
 
 export const InputField = ({
