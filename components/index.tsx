@@ -7,3 +7,4 @@ export * from './SideBarNav';
 export * from './Track';
 export * from './Tracks';
 export * from './UserProfile';
+export * from './TrackPlayer';
