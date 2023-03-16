@@ -62,7 +62,7 @@ export const TrackPlayer = () => {
           setTimeout(() => {
             spotifyApi.play();
             setIsPlaying(true);
-          }, 300);
+          }, 500);
         });
       }
     });
@@ -116,23 +116,16 @@ export const TrackPlayer = () => {
             <RewindIcon className="w-4 sm:w-5  h-4 sm:h-5 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
           }
         />
-        {isPlaying ? (
-          <Button
-            onClick={handlePlayPause}
-            buttonName=""
-            imageIcon={
-              <PauseIcon className="w-10 h-10 cursor-pointer hover:scale-125 transition transform duration-100 ease-out " />
-            }
-          />
-        ) : (
-          <Button
-            onClick={handlePlayPause}
-            buttonName=""
-            imageIcon={
+        <Button
+          onClick={handlePlayPause}
+          buttonName=""
+          imageIcon={
+            isPlaying ? 
+              <PauseIcon className="w-10 h-10 cursor-pointer hover:scale-125 transition transform duration-100 ease-out " /> 
+                :  
               <PlayIcon className="w-10 h-10 cursor-pointer hover:scale-125 transition transform duration-100 ease-out" />
-            }
-          />
-        )}
+          }
+        />
         <Button
           onClick={handleNextSong}
           buttonName=""

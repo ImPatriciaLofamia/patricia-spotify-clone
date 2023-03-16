@@ -19,7 +19,7 @@ export const Track = ({ order, track }) => {
 
   return (
     <div
-      className="grid grid-cols-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-md mt-5 cursor-pointer"
+      className="bg-black grid grid-cols-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-md mt-5 cursor-pointer"
       onClick={playTrack}
     >
       <div className="flex items-center space-x-4 py-1 px-2">
