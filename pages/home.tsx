@@ -55,7 +55,7 @@ function Home() {
             {playlists?.slice(0, 6).map((playlist) => (
               <div>
                 <Link
-                  href={`/tracks/${playlist.id}`}
+                  href={`/track/${playlist.id}`}
                   onClick={() => setPlaylistId(playlist.id)}
                 >
                   <Cards
@@ -74,7 +74,7 @@ function Home() {
           <ul className="grid gap-4 md:grid-cols-4 sm:grid-cols-2 xl:grid-cols-8">
             {playlists?.map((item) => (
               <Link
-                href={`/tracks/${item.id}`}
+                href={`/track/${item.id}`}
                 onClick={() => setPlaylistId(item.id)}
               >
                 <Category

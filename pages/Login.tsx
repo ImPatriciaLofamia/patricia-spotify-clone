@@ -3,12 +3,12 @@ import { getProviders, signIn } from "next-auth/react";
 import Button from "@/components/Button";
 import InputField from "@/components/InputField";
 
-function Login({providers}) {
+function Login({ providers }) {
   return (
     <div className="flex flex-col justify-center w-full">
       <div className="flex justify-center w-full py-6 border-b-2 border-gray-300">
         <div className="flex flex-row items-center">
-          <img src="spotify.png" className="w-15"/>
+          <img src="spotify.png" className="w-15" />
           <p className="text-2xl font-bold"> Spotify.</p>
         </div>
       </div>
@@ -23,22 +23,16 @@ function Login({providers}) {
               primary
               image="fb.png"
               buttonName={"Continue with Facebook".toUpperCase()}
-              onClick={() =>
-                alert('You clicked a button.')
-              }
+              onClick={() => alert("You clicked a button.")}
             />
             <Button
               image="apple.png"
               className="px-8 py-3 text-white bg-black hover:bg-slate-700"
-              buttonName={"continue with apple".toUpperCase()}
-              onClick={() =>
-                alert(`You clicked a button.`)
-              }
+              buttonName={"CONTINUE WITH APPLE"}
+              onClick={() => alert(`You clicked a button.`)}
             />
             <Button
-              onClick={() =>
-                alert(`You clicked a button.`)
-              }
+              onClick={() => alert(`You clicked a button.`)}
               image="google.png"
               className="px-8 py-3 border border-gray-400 text-black bg-white hover:bg-slate-300"
               buttonName={"continue with google".toUpperCase()}
@@ -79,7 +73,7 @@ function Login({providers}) {
                       success
                       buttonName="LOGIN"
                       onClick={() => {
-                        signIn(provider.id, { callbackUrl: "/" })
+                        signIn(provider.id, { callbackUrl: "/" });
                       }}
                     />
                   </div>
@@ -97,7 +91,7 @@ function Login({providers}) {
       </div>
     </div>
   );
-};
+}
 export default Login;
 export async function getServerSideProps() {
   const providers = await getProviders();
