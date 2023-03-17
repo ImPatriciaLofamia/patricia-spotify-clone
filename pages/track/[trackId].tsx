@@ -6,7 +6,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { playlistIdState, playlistState } from "../../atoms/playlistAtom";
 import useSpotify from "@/hooks/useSpotify";
 import { Tracks, UserProfile } from "@/components";
-
+import { useRouter } from "next/router";
 
 const colors = [
   "from-indigo-500",
@@ -20,6 +20,7 @@ const colors = [
 export const Center = () => {
   const { data: session, status } = useSession();
   const spotifyApi = useSpotify();
+  const router = useRouter();
   const [color, setColor] = useState(null);
   const playlistId = useRecoilValue(playlistIdState);
   const [playlists, setPlaylist] = useRecoilState(playlistState);
@@ -37,7 +38,7 @@ export const Center = () => {
       })
       .catch((err) => console.log("Something went wrong!", err));
   }, [spotifyApi, playlistId]);
-
+ 
   return (
     <div className="bg-black flex-grow h-screen overflow-y-scroll scrollbar-hide select-none relative">
       <header className="absolute top-5 right-8">

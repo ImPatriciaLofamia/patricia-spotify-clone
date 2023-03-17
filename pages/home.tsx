@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
-import { useRecoilState } from "recoil";
-import { ChevronDownIcon } from "@heroicons/react/outline";
-import { useRouter } from "next/router";
-
-import Category from "@/components/Category";
-import Cards from "@/components/Cards";
-import useSpotify from "../hooks/useSpotify";
-import { playlistIdState } from "../atoms/playlistAtom";
-import UserProfile from "@/components/UserProfile";
+import React, { useEffect, useState } from "react"
+import { signOut, useSession } from "next-auth/react"
+import Link from "next/link"
+import { useRecoilState } from "recoil"
+import { ChevronDownIcon } from "@heroicons/react/outline"
+import { useRouter } from "next/router"
+import Category from "@/components/Category"
+import useSpotify from "../hooks/useSpotify"
+import { playlistIdState } from "../atoms/playlistAtom"
+import UserProfile from "../components/UserProfile"
+import Cards from "@/components/Cards"
 
 function Home() {
   const router = useRouter();
@@ -61,7 +60,7 @@ function Home() {
                   <Cards
                     key={playlist.id}
                     imageUrl={playlist.images?.[0]?.url}
-                    name={playlist.name}
+                    name={playlist?.name}
                   />
                 </Link>
               </div>
