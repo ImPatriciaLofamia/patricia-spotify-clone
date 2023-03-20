@@ -9,12 +9,13 @@ import {
 import { HeartIcon } from "@heroicons/react/solid";
 import Button from "./Button";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import useSpotify from "@/hooks/useSpotify";
 import { useRecoilState } from "recoil";
 import { playlistIdState } from "../atoms/playlistAtom";
+import { useRouter } from "next/router";
 
 export const SideBarNav = () => {
+  const router = useRouter();
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
   const [playlists, setPlaylists] = useState([]);
@@ -28,15 +29,14 @@ export const SideBarNav = () => {
     }
   }, [session, spotifyApi]);
   return (
-    <div className="bg-black text-gray-500 p-3 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36">
-      <div className="space-y-4">
-        <Link href="/home">
-          <Button
-            className="flex items-center space-x-2 justify-start hover:text-white border-0"
-            buttonName="Home"
-            imageIcon={<HomeIcon className="w-5 h-5" />}
-          />
-        </Link>
+    <div className="bg-black text-gray-500 p-3 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex flex-col">
+      <div className="space-y-4 sticky top-0">
+        <Button
+          className="flex items-center space-x-2 justify-start hover:text-white border-0"
+          buttonName="Home"
+          imageIcon={<HomeIcon className="w-5 h-5" />}
+          onClick={() => router.push("/home")}
+        />
 
         <Button
           className="flex items-center space-x-2 justify-start hover:text-white border-0"
@@ -66,9 +66,16 @@ export const SideBarNav = () => {
         />
         <hr className="border-t-[0.1px] border-gray-900"></hr>
 
-        {playlists.map((playlist) => (
-          <p  key={playlist.id}
-            onClick={() => setPlaylistId(playlist.id)}
+        
+      </div>
+      <div className="overflow-y-auto scrollbar-hide h-screen">
+      {playlists.map((playlist) => (
+          <p
+            key={playlist.id}
+            onClick={() => {
+              setPlaylistId(playlist.id);
+              router.push(`/track/${playlist.id}`);
+            }}
             className="cursor-pointer hover:text-white py-1"
           >
             {playlist.name}
